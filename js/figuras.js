@@ -40,7 +40,36 @@ console.groupEnd();
 
 // CIRCLE CODE
 // Radius
-const PI = 
+const circleRadius = 4;
+// Diameter
+const circleDiameter = circleRadius * 2;
+// PI
+const PI = Math.PI;
+// Circumference
+function getCircleCircumference(diameter, decimals = 8) {
+    /*
+    @param {Number} diameter El diámetro del círculo.
+    @param {Number} decimal El limite de decimales requeridos (Por defecto es 8).
+    @returns {Number} La circumferencia.
+    */
+    const PI = Math.PI;
+    return parseFloat((diameter * PI).toFixed(decimals));
+}
+const circleCircumference = getCircleCircumference(circleDiameter, 3);
+// Circle area
+function getCircleArea(radius, decimals = 8) {
+    /*
+        * @param {Number} radius El radio del círculo.
+        * @param {Number} decimals El limite de decimales requeridos (Por defecto es 8).
+        * @returns {Number} El área del círculo.
+    */
+    const PI = Math.PI;
+    return parseFloat((PI * (radius ** 2)).toFixed(decimals));
+}
+const circleArea = getCircleArea(circleRadius, 3);
 console.group("Circulo");
-
+console.log(`El radio del circulo es: ${circleRadius}cm`);
+console.log(`El diámetro del circulo es: ${circleDiameter}cm`);
+console.log(`La circunferencia del círculo es: ${circleCircumference}cm`);
+console.log(`El área del círculo es: ${circleArea}cm^2`);
 console.groupEnd();
