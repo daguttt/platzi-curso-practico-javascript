@@ -1,18 +1,27 @@
-// SQUARE CODE
-const lengthSquareSide = 5;
-const squarePerimeter = lengthSquareSide * 4;
-const squareArea = lengthSquareSide * lengthSquareSide;
-console.group("Cuadrado");
-console.log(`Los lados del cuadrado miden ${lengthSquareSide}`);
-console.log(`El perimetro del cuadrado es ${squarePerimeter}cm`);
-console.log(`El área del cuadrado es ${squareArea}cm^2`);
-console.groupEnd();
+const results = document.getElementsByClassName('card__result');
+// SQUARE FUNCTIONS
+const squareLengthSide = document.getElementById('square-side');;
+function getSquarePerimeter(side) {
+    return side * 4;
+}
+function getSquareArea(side) {
+    return side ** 2;
+}
+const squarePerimeterButton = document.getElementById('square-perimeter-button');
+squarePerimeterButton.addEventListener('click', () => {
+    let perimeter = getSquarePerimeter(parseInt(squareLengthSide.value));
+    results[0].innerHTML = perimeter
+});
+const squareAreaButton = document.getElementById('square-area-button');
 
-// TRIANGLE CODE
-const sideTriangle1 = 6;
-const sideTriangle2 = 6;
-const baseTriangle = 4;
-const trianglePerimeter = sideTriangle1 + sideTriangle2 + baseTriangle;
+// TRIANGLE FUNCTIONS
+const triangleSide1 = document.getElementById('triangle-side1');
+const triangleSide2 = document.getElementById('triangle-side2');
+const triangleBase = document.getElementById('triangle-base');
+
+function getTrianglePerimeter(sides, base) {
+    return sides[0] + sides[1] + base
+}
 function getTriangleHeight(
     sides,
     base,
@@ -25,22 +34,13 @@ function getTriangleHeight(
         Math.sqrt(s * (s - sides[0]) * (s - sides[1]) * (s - base));
     return height;
 }
-const triangleArea =
-    (baseTriangle *
-        getTriangleHeight([sideTriangle1, sideTriangle2], baseTriangle)) /
-    2;
+function getTriangleArea (base, height) {
+    return (base * height) / 2;
+}
 
-console.group("Triangulo");
-console.log(
-    `Dos lados del triangulo miden: ${sideTriangle1}cm. Y su base mide: ${baseTriangle}cm.`
-);
-console.log(`El perimetro del triangulo es: ${trianglePerimeter}cm`);
-console.log(`El área del triangulo es: ${Math.floor(triangleArea)}cm^2`);
-console.groupEnd();
-
-// CIRCLE CODE
+// CIRCLE FUNCTIONS
 // Radius
-const circleRadius = 4;
+const circleRadius = document.getElementById('circle-radius');4;
 // Diameter
 const circleDiameter = circleRadius * 2;
 // PI
@@ -67,9 +67,16 @@ function getCircleArea(radius, decimals = 8) {
     return parseFloat((PI * (radius ** 2)).toFixed(decimals));
 }
 const circleArea = getCircleArea(circleRadius, 3);
-console.group("Circulo");
-console.log(`El radio del circulo es: ${circleRadius}cm`);
-console.log(`El diámetro del circulo es: ${circleDiameter}cm`);
-console.log(`La circunferencia del círculo es: ${circleCircumference}cm`);
-console.log(`El área del círculo es: ${circleArea}cm^2`);
-console.groupEnd();
+
+// -----------------------DOM----------------------------------
+//BUTTONS
+// Square
+
+// Triangle
+const trianglePerimeterButton = document.getElementById('triangle-perimeter-button');
+const triangleAreaButton = document.getElementById('triangle-area-button');
+// Circle
+const circleCircumferenceButton = document.getElementById('circle-circumference-button');
+const circleAreaButton = document.getElementById('circle-area-button');
+
+// Function
