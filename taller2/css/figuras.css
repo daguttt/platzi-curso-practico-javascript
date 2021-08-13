@@ -20,7 +20,7 @@ main {
     align-items: center;
     padding: 0 200px;
 }
-.card__container {
+.card{
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -29,4 +29,13 @@ main {
     padding: 20px;
     border-radius: 15px;
     background-color: #e6e6e6;
+}
+.label-container {
+    display: flex;
+}
+.label-container > * {
+    width: 80%;
+}
+.label-container > label {
+    width: 20%;
 }
