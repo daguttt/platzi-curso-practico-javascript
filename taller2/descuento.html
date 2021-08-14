@@ -20,17 +20,12 @@
                     <input class="card__input" type="number" name="price" id="price" placeholder="¿Cuál es el precio del producto?">
                 </div>
                 <div class="label-container">
-                    <label for="discount">Discount:</label>
+                    <label for="discount">Descuento:</label>
                     <input class="card__input" type="number" name="discount" id="discount" placeholder="¿Qué descuento tiene?">
                 </div>
                 <div class="label-container">
                     <label for="coupons">¿Cupón?: </label>
-                    <select name="coupons" id="coupons">
-                        <option value="no-coupon">No cupón</option>
-                        <option value="25">-25%</option>
-                        <option value="50">-50%</option>
-                        <option value="75">-75%</option>
-                    </select>
+                    <input type="text" id="coupons">
                 </div>
                 <button type="button" class="card__button" id="get-price-button">Calcular precio</button>
                 <p class="card__result"></p>
