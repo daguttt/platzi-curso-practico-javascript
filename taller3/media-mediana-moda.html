@@ -16,8 +16,12 @@
             <form class="card">
                 <h2 class="card__title">Media, Mediana y Moda</h2>
                 <div class="label-container">
-                    <label for="price">Precio:</label>
-                    <select name="statistical-operation" id="statistical-operation">
+                    <label for="numbers">Ingresa los números (separandolos por comas)</label>
+                    <input type="text" id="numbers" class="card__input">
+                </div>
+                <div class="label-container">
+                    <label for="statistical-operation">Operación</label>
+                    <select name="statistical-operation" id="statistical-operation" class="card__input">
                         <option value="media">Media o Promedio</option>
                         <option value="mediana">Mediana</option>
                         <option value="moda">Moda</option>
