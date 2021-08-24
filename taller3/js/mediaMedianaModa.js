@@ -45,14 +45,49 @@ function getMode(numbers) {
     }, []);
     return { reps, mode };
 }
-function clearInputNumbers(numbersString) {
-    let numbersClear = numbersString.replace(/\W/g, "s");
+
+function getWeightedAverage(elements) {
+    /* elements (array of objects) */
+    [sumElements, sumWeights] = elements.reduce((acc, cur) => {
+        acc[0] = acc[0] ?? 0, acc[1] = acc[1] ?? 0;
+        let multiply = cur.value * cur.weight;
+        acc = [multiply + acc[0], cur.weight + acc[1]];
+        return acc;
+    }, []);
+    return sumElements / sumWeights;
+}
+function clearInputNumbers(stringNumbers) {
+    if (stringNumbers.search(/(\(\d{1,},?\s?\d{1,}\),?\s?){1,}/g) !== -1) {
+        let arrayStringPairs = stringNumbers.match(/\(\d{1,},?\s{1,}?\d{1,}\)/g);
+        let arrayObjects = arrayStringPairs.reduce((acc, cur) => {
+            let [value, weight] = cur.replace(/\W/g, "").split("");
+            value = Number(value);
+            weight = Number(weight);
+            acc.push({ value, weight });
+            return acc;
+        }, []);
+        return arrayObjects;
+    }
+    let numbersClear = stringNumbers.replace(/\W/g, "s");
     let arrayNumbers = numbersClear.split("s").reduce((acc, cur) => {
         if (cur) acc.push(Number(cur));
         return acc;
     }, []);
     return arrayNumbers;
 }
+operation.addEventListener("change", () => {
+    label = document.querySelector("[for=numbers]");
+    if (operation.value == "media-ponderada") {
+        label.innerText = `Ingresa los numberos con su ponderación entre paréntesis ( ).`;
+        NUMBERS.setAttribute('placeholder', '(valor ponderacion) Ej: (1 2) (2 1)')
+        results[0].innerText = '', NUMBERS.value = ''
+        return
+    }
+    label.innerText = `Ingresa los números (separandolos por comas).`;
+    NUMBERS.setAttribute('placeholder', '1, 2, 3, 4')
+    results[0].innerText = '', NUMBERS.value = ''
+    return
+});
 calculateButton.addEventListener("click", () => {
     let operationValue = operation.value,
         numbers = clearInputNumbers(NUMBERS.value),
@@ -71,5 +106,9 @@ calculateButton.addEventListener("click", () => {
         results[0].innerText = `La moda es ${result.mode} con ${result.reps} ${
             result.reps === 1 ? "repetición" : "repeticiones"
         }.`;
+    }
+    if (operationValue == "media-ponderada") {
+        result = getWeightedAverage(numbers);
+        results[0].innerText = `La media ponderada de los números ingresados es ${result}.`;
     }
 });
