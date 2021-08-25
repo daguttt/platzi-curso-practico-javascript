@@ -1,0 +1,40 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.header {
+    display: flex;
+    justify-content: space-evenly;
+    height: 10vh;
+}
+main {
+    height: 90vh;
+}
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    height: 100%;
+    align-items: center;
+    padding: 0 200px;
+}
+.card{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 300px;
+    padding: 20px;
+    border-radius: 15px;
+    background-color: #e6e6e6;
+}
+.label-container {
+    display: flex;
+}
+.label-container > * {
+    width: 75%;
+}
+.label-container > label {
+    width: 25%;
+}
